@@ -133,7 +133,6 @@ def main():
     # Print some statistics
     if not comments_df.empty:
         print(f"Total comments collected: {len(comments_df)}")
-        print(f"Comments per video: {comments_df['video_id'].value_counts().to_dict()}")
         
         # Print language statistics if you have language detection
         # You can add langdetect or other libraries to identify Kurdish comments
