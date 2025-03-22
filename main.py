@@ -108,11 +108,15 @@ def save_comments_to_csv(df, output_file="youtube_comments.csv"):
 def main():
     parser = argparse.ArgumentParser(description="Download YouTube comments using yt-dlp")
     parser.add_argument("--videos", nargs="+", help="List of YouTube video IDs")
-    parser.add_argument("--output", default="kurdish_comments.csv", help="Output CSV file")
+    parser.add_argument(
+        "--output",
+        default="/Users/muzaffercikay/Desktop/personel/kurdish-kurmanji-typo-correction/kurdish_comments.csv",
+        help="Output CSV file",
+    )
     parser.add_argument("--folder", default="comments", help="Folder to save comment files")
-    
+
     args = parser.parse_args()
-    
+
     if not args.videos:
         # Example: Get video IDs for Mem Ararat's songs
         video_ids = [
@@ -123,17 +127,17 @@ def main():
         print("No video IDs provided. Using example video IDs.")
     else:
         video_ids = args.videos
-    
+
     # Get comments
     comments_df = get_comments_from_multiple_videos(video_ids, args.folder)
-    
+
     # Save to CSV
     save_comments_to_csv(comments_df, args.output)
-    
+
     # Print some statistics
     if not comments_df.empty:
         print(f"Total comments collected: {len(comments_df)}")
-        
+
         # Print language statistics if you have language detection
         # You can add langdetect or other libraries to identify Kurdish comments
 
